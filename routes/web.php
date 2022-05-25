@@ -18,8 +18,21 @@ $router->get('/version', function () use ($router) {
 });
 
 
-$router->get('/saludo',function (){
-    return "Hola mi nombre es Luis Angel";
+$router->get('/saludo/{nombre}',function ($nombre){
+    return "Hola mi nombre es " . $nombre;
+});
+
+$router->get('/edad/{edad}',function ($edad){
+    if ($edad < 0){
+        return "Esa edad no existe";
+    } elseif ($edad < 18){
+        return "Eres menor de edad " .$edad;
+    } elseif ($edad >= 18 && $edad < 100){
+        return "Eres mayor de edad" .$edad;
+    } else {
+        return "Muy poco creible";
+    };
+
 });
 
 $router->post('/saludo',function (){
